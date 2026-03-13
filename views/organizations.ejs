@@ -1,0 +1,26 @@
+<%- include("partials/header", { title: title }) %>
+
+    <main class="container">
+        <section class="hero">
+            <h2>
+                <%= title %>
+            </h2>
+            <p>These organizations support service projects and community improvement.</p>
+        </section>
+
+        <section class="card-grid">
+            <article class="card">
+                <img src="/images/community-help.jpg" alt="People helping in the community">
+                <h3>Community Helpers</h3>
+                <p>A local organization focused on supporting families and neighborhoods.</p>
+            </article>
+
+            <article class="card">
+                <img src="/images/volunteer-group.jpg" alt="Volunteer group working together">
+                <h3>Volunteer Network</h3>
+                <p>This group connects volunteers with meaningful service opportunities.</p>
+            </article>
+        </section>
+    </main>
+
+    <%- include("partials/footer") %>
