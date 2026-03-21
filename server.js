@@ -1,37 +1,52 @@
-import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import dotenv from "dotenv";
+const express = require("express");
+const path = require("path");
+const dotenv = require("dotenv");
+const categoriesModel = require("./categories");
+const organizationsModel = require("./organizations");
+const projectsModel = require("./projects");
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-app.get("/organizations", (req, res) => {
-    res.render("organizations", { title: "Organizations" });
+app.get("/categories", async (req, res) => {
+    try {
+        const categories = await categoriesModel.getAllCategories();
+        res.render("categories", { title: "Categories", categories });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
 });
 
-app.get("/projects", (req, res) => {
-    res.render("projects", { title: "Projects" });
+app.get("/organizations", async (req, res) => {
+    try {
+        const organizations = await organizationsModel.getAllOrganizations();
+        res.render("organizations", { title: "Organizations", organizations });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
 });
 
-app.get("/categories", (req, res) => {
-    res.render("categories", { title: "Categories" });
+app.get("/projects", async (req, res) => {
+    try {
+        const projects = await projectsModel.getAllProjects();
+        res.render("projects", { title: "Projects", projects });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
 });
-
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });

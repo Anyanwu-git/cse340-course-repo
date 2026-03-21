@@ -1,34 +1,22 @@
-<%- include("partials/header", { title: title }) %>
+<h1>Categories</h1>
+
+<ul>
+    <% categories.forEach(category=> { %>
+        <li>
+            <%= category.category_name %>
+        </li>
+        <% }) %>
+</ul><%- include("partials/header", { title: title }) %>
 
     <main class="container">
-        <section class="hero">
-            <h2>
-                <%= title %>
-            </h2>
-            <p>These are some common service project categories in our community.</p>
-        </section>
-
-        <section class="card-grid">
-            <article class="card">
-                <h3>Environmental</h3>
-                <p>Projects that help protect nature, reduce waste, and improve the environment.</p>
-            </article>
-
-            <article class="card">
-                <h3>Educational</h3>
-                <p>Projects that support learning through tutoring, mentoring, and school programs.</p>
-            </article>
-
-            <article class="card">
-                <h3>Community Service</h3>
-                <p>Projects that support local people through volunteering and outreach.</p>
-            </article>
-
-            <article class="card">
-                <h3>Health and Wellness</h3>
-                <p>Projects that encourage healthy living and support wellbeing.</p>
-            </article>
-        </section>
+        <h1>Categories</h1>
+        <ul>
+            <% categories.forEach(category=> { %>
+                <li>
+                    <%= category.category_name %>
+                </li>
+                <% }) %>
+        </ul>
     </main>
 
     <%- include("partials/footer") %>

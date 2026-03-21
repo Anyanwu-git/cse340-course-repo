@@ -1,29 +1,17 @@
 <%- include("partials/header", { title: title }) %>
 
     <main class="container">
-        <section class="hero">
-            <h2>
-                <%= title %>
-            </h2>
-            <p>These are some example service projects that can make a positive difference.</p>
-        </section>
-
-        <section class="card-grid">
-            <article class="card">
-                <h3>Park Clean-Up</h3>
-                <p>A project where volunteers clean parks and public spaces.</p>
-            </article>
-
-            <article class="card">
-                <h3>School Supply Drive</h3>
-                <p>A project that gathers supplies for students and teachers.</p>
-            </article>
-
-            <article class="card">
-                <h3>Food Donation Program</h3>
-                <p>A project that helps collect and share food with people in need.</p>
-            </article>
-        </section>
+        <h1>Projects</h1>
+        <ul>
+            <% projects.forEach(project=> { %>
+                <li>
+                    <strong>
+                        <%= project.project_name %>
+                    </strong>
+                    - <%= project.project_description %>
+                </li>
+                <% }) %>
+        </ul>
     </main>
 
     <%- include("partials/footer") %>
